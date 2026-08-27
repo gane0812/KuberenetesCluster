@@ -1,0 +1,24 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-hostinger
+spec:
+  acme:
+    # The ACME server URL
+    server: https://acme-v02.api.letsencrypt.org/directory
+    # Email address used for ACME registration
+    email: $EMAIL
+    privateKeySecretRef:
+      name: letsencrypt-account-key
+    solvers:
+    - dns01:
+        webhook:
+          # This must match the groupName you set during Helm installation
+          groupName: acme.ganeshsaravanan.online
+          solverName: hostinger
+          config:
+            # Hostinger API URL
+            serverURL: "https://developers.hostinger.com"
+            apiTokenSecretRef:
+              name: hostinger-credentials
+              key: apiToken
