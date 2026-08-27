@@ -62,7 +62,6 @@ helm repo add traefik https://traefik.github.io/charts
 helm repo update 
 
 helm install traefik traefik/traefik \
-  --namespace traefik \
   --values helm/traefik/values.yaml
 
 echo "Installing Cert-Manager using Helm"
