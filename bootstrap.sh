@@ -77,6 +77,7 @@ helm install hostinger-webhook oci://ghcr.io/lokinado/cert-manager-webhook-hosti
     --namespace cert-manager \
     --set groupName='acme.ganeshsaravanan.online'
 
+echo "fails even before creating created secret"
 HOSTINGERAPIKEY=$(printf "%s" "$HOSTINGERAPIKEY" | tr -d '\r\n')
 
 
