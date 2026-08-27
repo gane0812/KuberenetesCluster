@@ -15,7 +15,7 @@ steps:
   displayName: "Run Bootstrap script"
   inputs:
     targetType: filePath
-    filePath: 'boostrap.sh'
+    filePath: 'bootstrap.sh'
   env:
    EMAIL: $(email)
    HOSTINGERAPIKEY: $(hostingerApiKey)
