@@ -78,7 +78,7 @@ helm install hostinger-webhook oci://ghcr.io/lokinado/cert-manager-webhook-hosti
     --set groupName='acme.ganeshsaravanan.online'
 
 kubectl create secret generic hostinger-credentials \
-  --from-literal=apiToken= $HOSTINGERAPIKEY \
+  --from-literal=apiToken="$HOSTINGERAPIKEY" \
   --namespace=cert-manager
 
 kubectl apply -f helm/cert-manager/clusterissuer.yaml
