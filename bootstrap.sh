@@ -38,7 +38,7 @@ k3d cluster create k8s \
   --port 80:80@loadbalancer \
   --port 443:443@loadbalancer \
   --port 8000:8000@loadbalancer \
-  --k3s-arg "--disable=traefik@server:0"
+  --k3s-arg "--disable=k8s@server:0"
 
 echo "Setting up kubeconfig for k3d cluster"    
 kubectl config use-context k3d-k8s   
@@ -77,9 +77,12 @@ helm install hostinger-webhook oci://ghcr.io/lokinado/cert-manager-webhook-hosti
     --namespace cert-manager \
     --set groupName='acme.ganeshsaravanan.online'
 
+set -x
+echo "Length of key: ${#HOSTINGERAPIKEY}"
 kubectl create secret generic hostinger-credentials \
   --from-literal=apiToken="$HOSTINGERAPIKEY" \
   --namespace=cert-manager
+set +x
 
 kubectl apply -f helm/cert-manager/clusterissuer.yaml
 kubectl apply -f helm/cert-manager/certificate.yaml
