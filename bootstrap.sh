@@ -80,7 +80,7 @@ helm install hostinger-webhook oci://ghcr.io/lokinado/cert-manager-webhook-hosti
 set -x
 echo "Length of key: ${#HOSTINGERAPIKEY}"
 kubectl create secret generic hostinger-credentials \
-  --from-literal=apiToken="$HOSTINGERAPIKEY" \
+  --from-literal=apiToken='xiKYO7m06erElk8oMvkXFbV9JZXh9me7GaNd23Y76a896394' \
   --namespace=cert-manager
 set +x
 
