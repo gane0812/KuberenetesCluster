@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: game-chess
+  labels:
+    app: chess
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: chess
+  template:
+    metadata:
+      labels:
+        app: chess
+    spec:
+      containers:
+      - name: chess
+        image: rmeira/chess
+        ports:
+        - containerPort: 80
