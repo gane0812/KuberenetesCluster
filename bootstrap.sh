@@ -75,15 +75,15 @@ helm install \
 echo "Installing Hostinger webhook for Cert-Manager"
 helm install hostinger-webhook oci://ghcr.io/lokinado/cert-manager-webhook-hostinger \
     --namespace cert-manager \
-    --set groupName='acme.ganeshsaravanan.online'
+        --set groupName='acme.ganeshsaravanan.online'
 
-echo "fails even before creating created secret"
-HOSTINGERAPIKEY=$(printf "%s" "$HOSTINGERAPIKEY" | tr -d '\r\n')
+        echo "fails even before creating created secret"
+        HOSTINGERAPIKEY=$(printf "%s" "$HOSTINGERAPIKEY" | tr -d '\r\n')
 
 
-kubectl create secret generic hostinger-credentials \
- --from-literal="apiToken=$HOSTINGERAPIKEY" \
-  --namespace=cert-manager
+        kubectl create secret generic hostinger-credentials \
+         --from-literal="apiToken=$HOSTINGERAPIKEY" \
+           --namespace=cert-manager
 
 
 kubectl apply -f helm/cert-manager/clusterissuer.yaml
