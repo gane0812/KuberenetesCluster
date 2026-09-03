@@ -1,0 +1,19 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: game-2048
+  namespace: default
+spec:
+  parentRefs:
+  - name: traefik-gateway
+    sectionName: websecure
+  hostnames:
+  - "2048.ganeshsaravanan.online"
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: game-2048
+      port: 80
