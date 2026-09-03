@@ -18,7 +18,7 @@ steps:
 - task: AzureCLI@2
   displayName: 'Connect to AKS'
   inputs:
-    azureSubscription: 'My-ARM-ServiceConnection'
+    azureSubscription: 'Revolut-ServiceConnection'
     scriptType: bash
     scriptLocation: inlineScript
     inlineScript: |
