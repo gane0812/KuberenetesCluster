@@ -3,9 +3,9 @@ trigger:
   include:
    - main
 
-  paths:
-   exclude:
-    - app/** 
+paths:
+ exclude:
+  - app/** 
 pool:
   vmImage: ubuntu-latest
 
