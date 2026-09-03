@@ -1,19 +1,18 @@
 #!/bin/bash
 set -e
+
 echo "Installing Kubectl"
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/
-
 echo "Verifying Kubectl installation"
 kubectl version --client
+
+
 echo "Installing Helm"
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4
 chmod 700 get_helm.sh
 ./get_helm.sh
-
-#
 echo "Verifying Helm installation"
 helm version
 
@@ -24,7 +23,6 @@ echo "Installing Kubernetes Gateway CRDs"
 kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.6.1/standard-install.yaml
 
 echo "Generating self-signed TLS certificate"
-
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
   -keyout tls.key -out tls.crt \
   -subj "/CN=*.ganeshsaravanan.online"
