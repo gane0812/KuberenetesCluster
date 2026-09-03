@@ -1,12 +1,11 @@
 trigger:
- branches:
-  include:
-    - main
+  branches:
+    include:
+      - main
 
- paths:
-   include:
-     - app/**
-
+  paths:
+    include:
+      - app/**
 pool:
   vmImage: ubuntu-latest
 
