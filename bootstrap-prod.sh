@@ -29,7 +29,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 
 echo "Creating TLS secret"
 kubectl create secret tls ganeshsaravanan-tls \
-  --cert=tls.crt --key=tls.key  
+  --cert=tls.crt --key=tls.key --dry-run=client -o yaml | kubectl apply -f -
 
 
 echo "Installing Traefik using Helm"
