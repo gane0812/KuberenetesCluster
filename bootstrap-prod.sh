@@ -61,5 +61,7 @@ helm install hostinger-webhook oci://ghcr.io/lokinado/cert-manager-webhook-hosti
            --namespace=cert-manager --dry-run=client -o yaml | kubectl apply -f -
 
 
-kubectl apply -f helm/cert-manager/clusterissuer.yaml
+echo "Applying certificate and issuer files"
+EXPORT EMAIL
+envsubst < helm/cert-manager/clusterissuer.yaml | kubectl apply -f -
 kubectl apply -f helm/cert-manager/certificate.yaml
